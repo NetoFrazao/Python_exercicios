@@ -17,11 +17,11 @@ try:
     #Converter JSON em dicionário Pythin
     endereco = json.loads(data)
 
-    #Verificar se a consulta foi bem-sucedida
+    # Verificar se a consulta foi bem-sucedida
     if endereco.get("erro"):
         print("CEP não encontrado")
     else:
-        #Armazenar informaçoes em variáveis
+        # Armazenar informaçoes em variáveis
         logradouro = endereco["logradouro"] 
         complemento = endereco["complemento"] 
         bairro = endereco["bairro"]  
