@@ -1,4 +1,4 @@
-def calcular_media(n, numeros):
+def calcularmedia(n, numeros):
     soma = sum(numeros)
     media = soma / n
     return media
@@ -15,8 +15,8 @@ def main():
         numero = float(input(f"Digite o {i+1}º número: "))
         numeros.append(numero)
 
-    media = calcular_media(n, numeros)
+    media = calcularmedia(n, numeros)
     print("A média aritmética dos números digitados é:", media)
 
 if __name__ == "__main__":
-    main()
+       main()
