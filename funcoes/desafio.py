@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 def cadastrar_notas(alunos):
     nome = input("Digite o nome do aluno: ")
     notas = []
@@ -18,10 +20,14 @@ def verificar_situacao(media):
         return "Reprovado"
 
 def mostrar_notas_cadastradas(alunos):
+    table_data = []
     for aluno, (notas, total_notas) in alunos.items():
         media = calcular_media(total_notas)
         situacao = verificar_situacao(media)
-        print(f"Aluno: {aluno} - Notas: {notas} - Média: {media:.2f} - Situação: {situacao}")   
+        table_data.append([aluno, notas, f"{media:.2f}", situacao])
+
+    print(tabulate(table_data, headers=["Aluno", "Notas", "Média", "Situação"], tablefmt="grid"))
+
 alunos = {}
 while True:
     print("\nMenu:")
