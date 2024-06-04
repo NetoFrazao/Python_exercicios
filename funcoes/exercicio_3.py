@@ -1,43 +1,25 @@
-def menu():
-    print("\nMenu:")
-    print("1. Cadastrar notas de um aluno")
-    print("2. Mostrar notas cadastradas")
-    print("3. Sair")
+def calcular_media(notas):
+    soma = sum(notas)
+    media = soma / len(notas)
+    return media
 
-def cadastrar_notas(alunos):
-    nome = input("Digite o nome do aluno: ")
-    notas = []
-    for i in range(4):
-        nota = float(input(f"Digite a nota {i+1} do aluno {nome}: "))
-        notas.append(nota)
-    alunos[nome] = notas
-
-def mostrar_notas(alunos):
-    if not alunos:
-        print("Nenhuma nota cadastrada.")
+def aprovacao(media):
+    if media >= 5:
+        return f"Aprovado com média {media:.2f}"
     else:
-        for nome, notas in alunos.items():
-            print(f"\nAluno: {nome}")
-            for i, nota in enumerate(notas, 1):
-                print(f"Nota {i}: {nota}")
-            media = sum(notas) / len(notas)
-            situacao = "Aprovado" if media >= 6 else "Reprovado"
-            print(f"Média: {media:.2f} - Situação: {situacao}")
+        return f"Reprovado com média {media:.2f}"
 
-def main():
-    alunos = {}
-    while True:
-        menu()
-        opcao = input("Escolha uma opção: ")
-        if opcao == '1':
-            cadastrar_notas(alunos)
-        elif opcao == '2':
-            mostrar_notas(alunos)
-        elif opcao == '3':
-            print("Saindo...")
-            break
-        else:
-            print("Opção inválida! Tente novamente.")
+nome_aluno = input("Digite o nome do aluno: ")
 
-#if __name__ == "__main__":
-    #main()
+notas = []
+
+for i in range(4):
+    nota = float(input(f"Digite a nota {i+1}: "))
+    notas.append(nota)
+
+
+media = calcular_media(notas)
+
+resultado = aprovacao(media)
+
+print(f"O aluno {nome_aluno} está {resultado}")
